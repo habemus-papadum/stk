@@ -1,0 +1,107 @@
+find_library(CORE_FOUNDATION CoreFoundation REQUIRED)
+find_library(CORE_AUDIO CoreAudio REQUIRED)
+find_library(CORE_MIDI CoreMIDI REQUIRED)
+
+
+
+add_library(stk STATIC
+        Stk.cpp
+        Noise.cpp
+        Blit.cpp
+        BlitSaw.cpp
+        BlitSquare.cpp
+        Granulate.cpp
+        Envelope.cpp
+        ADSR.cpp
+        Asymp.cpp
+        Modulate.cpp
+        SineWave.cpp
+        FileLoop.cpp
+        SingWave.cpp
+        FileRead.cpp
+        FileWrite.cpp
+        FileWvIn.cpp
+        FileWvOut.cpp
+        Fir.cpp
+        Iir.cpp
+        OneZero.cpp
+        OnePole.cpp
+        PoleZero.cpp
+        TwoZero.cpp
+        TwoPole.cpp
+        BiQuad.cpp
+        FormSwep.cpp
+        Delay.cpp
+        DelayL.cpp
+        DelayA.cpp
+        PRCRev.cpp
+        JCRev.cpp
+        NRev.cpp
+        FreeVerb.cpp
+        Chorus.cpp
+        Echo.cpp
+        PitShift.cpp
+        LentPitShift.cpp
+        Voicer.cpp
+        Sphere.cpp
+        Twang.cpp
+        Guitar.cpp
+        Clarinet.cpp
+        BlowHole.cpp
+        Saxofony.cpp
+        Flute.cpp
+        Brass.cpp
+        BlowBotl.cpp
+        Bowed.cpp
+        Plucked.cpp
+        StifKarp.cpp
+        Sitar.cpp
+        Mandolin.cpp
+        Mesh2D.cpp
+        FM.cpp
+        Rhodey.cpp
+        Wurley.cpp
+        TubeBell.cpp
+        HevyMetl.cpp
+        PercFlut.cpp
+        BeeThree.cpp
+        FMVoices.cpp
+        Sampler.cpp
+        Moog.cpp
+        Simple.cpp
+        Drummer.cpp
+        Shakers.cpp
+        Modal.cpp
+        ModalBar.cpp
+        BandedWG.cpp
+        Resonate.cpp
+        VoicForm.cpp
+        Phonemes.cpp
+        Whistle.cpp
+        Messager.cpp
+        Skini.cpp
+        MidiFileIn.cpp
+        RtMidi.cpp
+        RtAudio.cpp
+        RtWvOut.cpp
+        RtWvIn.cpp
+        InetWvOut.cpp
+        InetWvIn.cpp
+        Thread.cpp
+        Mutex.cpp
+        Socket.cpp
+        TcpClient.cpp
+        TcpServer.cpp
+        UdpSocket.cpp
+        )
+target_compile_definitions(stk
+        PUBLIC __MACOSX_CORE__ __LITTLE_ENDIAN__ -DRAWWAVE_PATH="${RAW_WAVE_PATH}"
+        PRIVATE HAVE_GETTIMEOFDAY)
+target_include_directories(stk PUBLIC
+                                  ${CMAKE_CURRENT_LIST_DIR}/../include
+                               PRIVATE
+                                  ${CMAKE_CURRENT_LIST_DIR}/include
+        )
+target_link_libraries(stk PUBLIC ${CORE_FOUNDATION} ${CORE_AUDIO} ${CORE_MIDI})
+
+## frameworks, defines, includes, features

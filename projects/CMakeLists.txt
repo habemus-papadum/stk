@@ -1,0 +1,5 @@
+add_subdirectory(demo)
+add_subdirectory(eguitar)
+add_subdirectory(effects)
+add_subdirectory(examples)
+add_subdirectory(ragamatic)

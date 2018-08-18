@@ -186,3 +186,5 @@ src/libstk.a
 src/Release
 src/Debug
 src/Makefile
+
+cmake-build-*/
