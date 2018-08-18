@@ -213,7 +213,7 @@ int main( int argc, char *argv[] )
 
   // Depending on how you compile STK, you may need to explicitly set
   // the path to the rawwave directory.
-  Stk::setRawwavePath( "../../rawwaves/" );
+  //Stk::setRawwavePath( "../../rawwaves/" );
 
   // By default, warning messages are not printed.  If we want to see
   // them, we need to specify that here.

@@ -2,8 +2,6 @@ find_library(CORE_FOUNDATION CoreFoundation REQUIRED)
 find_library(CORE_AUDIO CoreAudio REQUIRED)
 find_library(CORE_MIDI CoreMIDI REQUIRED)
 
-
-
 add_library(stk STATIC
         Stk.cpp
         Noise.cpp
@@ -94,14 +92,20 @@ add_library(stk STATIC
         TcpServer.cpp
         UdpSocket.cpp
         )
-target_compile_definitions(stk
-        PUBLIC __MACOSX_CORE__ __LITTLE_ENDIAN__ -DRAWWAVE_PATH="${RAW_WAVE_PATH}"
-        PRIVATE HAVE_GETTIMEOFDAY)
-target_include_directories(stk PUBLIC
-                                  ${CMAKE_CURRENT_LIST_DIR}/../include
-                               PRIVATE
-                                  ${CMAKE_CURRENT_LIST_DIR}/include
-        )
-target_link_libraries(stk PUBLIC ${CORE_FOUNDATION} ${CORE_AUDIO} ${CORE_MIDI})
+target_compile_definitions(
+        stk PUBLIC
+        __MACOSX_CORE__
+        __LITTLE_ENDIAN__
+        -DRAWWAVE_PATH="${RAW_WAVE_PATH}"
+        HAVE_GETTIMEOFDAY)
+target_include_directories(
+        stk PUBLIC
+        ${CMAKE_CURRENT_LIST_DIR}/../include
+        PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/include)
+target_link_libraries(
+        stk PUBLIC
+        ${CORE_FOUNDATION}
+        ${CORE_AUDIO}
+        ${CORE_MIDI})
 
-## frameworks, defines, includes, features
